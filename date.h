@@ -64,8 +64,6 @@ public:
 		return year;
 	}
 	friend std::ostream& operator <<(std::ostream &o, Date& data);
-
-
 };
 
 template<typename T>
@@ -100,7 +98,6 @@ public:
 
 	SmartSointer & operator = (SmartSointer& d)
 	{
-
 		if (&d == this)
 			return *this;
 
@@ -108,19 +105,16 @@ public:
 		m_date = d.m_date;
 		d.m_date = nullptr;
 		return *this;
-
 	}
 };
 
 
 Date* comparsionData(SmartSointer<Date> &d1, SmartSointer<Date> &d2)
 {
-
 	if ((d2->GetYear() + d2->GetMonth() + d2->GetDay()) >
 		(d1->GetYear() + d1->GetMonth() + d1->GetDay())) {
 		return new Date(d2->GetDay(), d2->GetMonth(), d2->GetYear());
 	}
-
 	return new Date(d1->GetDay(), d1->GetMonth(), d1->GetYear());
 }
 
@@ -130,12 +124,7 @@ void ExchangeDates(SmartSointer<Date> &d1, SmartSointer<Date> &d2)
 	temp = d1;
 	d1 = d2;
 	d2 = temp;
-	
 }
-
-
-
-
 
 std::ostream& operator <<(std::ostream &o, Date& data)
 {
@@ -168,17 +157,13 @@ void test_ptr() {
 		std::cout << *d4;
 	}
 	std::cout << *d3;
-	std::cout << *d4;
-
-
-
 
 }
 
 
 int datastart()
 {
-	//Date *datToday = new Date(31, 12, 2021);
+	//проверка первого задания
 	SmartSointer<Date> today(new Date(31, 12, 2021));
 	SmartSointer<Date> date;
 
@@ -187,7 +172,7 @@ int datastart()
 	date = today;
 	std::cout << date;
 
-
+	//проверка второго задания
 	SmartSointer<Date> date1(new Date(2, 7, 2009));
 	SmartSointer<Date> date2(new Date(13, 4, 2020));
 
@@ -204,12 +189,9 @@ int datastart()
 	std::cout << "первая дата - " << date1;
 	std::cout << "вторая дата - " << date2;
 
+	//разбирался с умными указателями из stl
 	test_ptr();
-	
-
-
 	return 0;
-
 }
 
 
